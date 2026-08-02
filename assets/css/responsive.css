@@ -1,3 +1,8 @@
+/* ==========================================
+   Responsive Styles
+   ========================================== */
+
+/* Large Screens & Desktop Adjustment */
 @media (max-width: 2000px) {
     .left-sidebar {
         max-width: 400px;
@@ -17,23 +22,46 @@
     }
 }
 
+/* Laptops & Standard Displays */
 @media (max-width: 1555px) {
     .left-sidebar {
         max-width: 350px;
         padding: 30px;
+        /* Vertical Screen Auto-Fit (Crop වෙන එක නතර කිරීමට) */
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+        scrollbar-width: none; /* Firefox */
     }
-    .left-sidebar>img.me {
+    
+    .left-sidebar::-webkit-scrollbar {
+        display: none; /* Chrome/Safari */
+    }
+
+    .left-sidebar > img.me {
         width: 100%;
-        max-width: 250px;
+        max-width: 230px;
         margin-left: auto;
         margin-right: auto;
-        margin-bottom: 46px;
+        margin-bottom: 30px; /* Reduced excess margin */
     }
+
     .left-sidebar .sidebar-header .designation {
         line-height: 1.4;
     }
 }
 
+/* Small Laptops & Mid-size screens */
+@media (max-width: 1366px) {
+    .left-sidebar {
+        max-width: 320px;
+        padding: 20px;
+    }
+    .content-width {
+        max-width: 650px;
+    }
+}
+
+/* Tablets & Small Devices Breakpoint */
 @media (max-width: 1220px) {
     .custom-container {
         max-width: 767px;
@@ -48,17 +76,20 @@
         position: relative;
         max-width: 767px;
         left: 0;
-        margin: auto;
+        margin: 20px auto 40px auto;
         top: 0;
         transform: translateY(0);
-        margin-top: 20px;
+        max-height: none;
+        overflow-y: visible;
         display: none;
     }
     .drake-main .left-sidebar {
         display: block;
     }
-    .left-sidebar>img.me {
+    .left-sidebar > img.me {
         width: auto;
+        max-width: 250px;
+        margin-bottom: 25px;
     }
     .icon-menu {
         position: fixed;
@@ -85,7 +116,7 @@
     }
     .services-items .service-item {
         margin-bottom: 0;
-        padding: 30px 30px 30px 30px;
+        padding: 30px;
         width: 33.3333%;
     }
     .services-items .service-item h2 {
@@ -105,12 +136,14 @@
     }
 }
 
+/* Medium Tablets */
 @media (max-width: 977px) {
-    .blog-three-columns-main .blog-content-area .row>.col-md-4 {
+    .blog-three-columns-main .blog-content-area .row > .col-md-4 {
         width: 50%;
     }
 }
 
+/* Small Tablets / Large Mobile */
 @media (max-width: 787px) {
     .hero-section .hero-content h1 {
         font-size: 58px;
@@ -121,6 +154,7 @@
     }
 }
 
+/* Standard Mobile Landscape / Portrait */
 @media (max-width: 767px) {
     .icon-menu {
         right: 30px;
@@ -183,7 +217,7 @@
         margin-right: 0;
         visibility: visible;
     }
-    .header-area nav .nav-menu li+li {
+    .header-area nav .nav-menu li + li {
         margin-top: 10px;
     }
     .header-area .header-right nav .nav-menu {
@@ -221,7 +255,7 @@
         padding-left: 15px;
         left: 0;
     }
-    .header-area nav .nav-menu li.active>.dropdown {
+    .header-area nav .nav-menu li.active > .dropdown {
         display: block;
     }
     .global-color .inner .global-color-option h2 {
@@ -251,7 +285,7 @@
     .blog-sidebar {
         margin-top: 50px;
     }
-    .blog-three-columns-main .blog-content-area .row>.col-md-4 {
+    .blog-three-columns-main .blog-content-area .row > .col-md-4 {
         width: 100%;
     }
     .footer-area {
@@ -262,6 +296,7 @@
     }
 }
 
+/* Small Mobile Devices */
 @media (max-width: 584px) {
     .subtitle {
         margin-bottom: 40px;
@@ -327,6 +362,7 @@
     }
 }
 
+/* Extra Small Screens */
 @media (max-width: 425px) {
     .comments-area .comments .comments-list .comment-item .comment-body .comment-content h4 {
         flex-direction: column;
@@ -334,7 +370,7 @@
         align-items: flex-start;
     }
     .comments-area .comments .comments-list .comment-item .comment-body .comment-content h4 .date {
-        margin-left: 26px;
-        margin-top: 10px;
+        margin-left: 0; /* Align left naturally on mobile */
+        margin-top: 5px;
     }
 }
