@@ -665,7 +665,12 @@
               <p id="required-msg">* Marked fields are required to fill.</p>
 
               <form class="contact-form scroll-animation" data-animation="fade_from_bottom" method="POST"
-                action="./mailer.php">
+                action="https://api.web3forms.com/submit">
+
+                <input type="hidden" name="access_key" value="27278862-84ff-4d9e-8c8e-724e9be401e4" />
+
+                <input type="hidden" name="from_name" value="Portfolio Lead" />
+
                 <div class="alert alert-success messenger-box-contact__msg" style="display: none" role="alert">
                   Your message was sent successfully.
                 </div>
@@ -673,13 +678,13 @@
                   <div class="col-md-6">
                     <div class="input-group">
                       <label for="full-name">full Name <sup>*</sup></label>
-                      <input type="text" name="full-name" id="full-name" placeholder="Your Full Name" />
+                      <input type="text" name="full-name" id="full-name" placeholder="Your Full Name" required />
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="input-group">
                       <label for="email">Email <sup>*</sup></label>
-                      <input type="email" name="email" id="email" placeholder="Your email adress" />
+                      <input type="email" name="email" id="email" placeholder="Your email adress" required />
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -691,7 +696,7 @@
                   <div class="col-md-6">
                     <div class="input-group">
                       <label for="subject">subject <sup>*</sup></label>
-                      <input type="text" name="subject" id="subject" placeholder="Enter your Subject" />
+                      <input type="text" name="subject" id="subject" placeholder="Enter your Subject" required />
                     </div>
                   </div>
                   <div class="col-md-12">
@@ -703,24 +708,14 @@
                   <div class="col-md-12">
                     <div class="input-group">
                       <label for="message">message</label>
-                      <textarea name="message" id="message" placeholder="Wrire your message here ..."></textarea>
-                    </div>
-                  </div>
-                  <div class="col-md-12">
-                    <div class="input-group upload-attachment">
-                      <div>
-                        <label for="upload-attachment">
-                          <i class="las la-cloud-upload-alt"></i> add an
-                          attachment
-                          <input type="file" name="file" id="upload-attachment" />
-                        </label>
-                      </div>
+                      <textarea name="message" id="message" placeholder="Wrire your message here ..."
+                        required></textarea>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="input-group submit-btn-wrap">
                       <button class="theme-btn" name="submit" type="submit" id="submit-form">
-                        send message
+                        Send Message
                       </button>
                     </div>
                   </div>
