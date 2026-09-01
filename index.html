@@ -664,16 +664,16 @@
               </h3>
               <p id="required-msg">* Marked fields are required to fill.</p>
 
-              <form class="contact-form scroll-animation" data-animation="fade_from_bottom" method="POST"
-                action="https://api.web3forms.com/submit">
+              <div class="alert alert-success messenger-box-contact__msg" id="form-success-msg" style="display: none;"
+                role="alert">
+                🎉 Thank you! Your message has been sent successfully.
+              </div>
+
+              <form class="contact-form scroll-animation" data-animation="fade_from_bottom" id="portfolio-contact-form">
 
                 <input type="hidden" name="access_key" value="27278862-84ff-4d9e-8c8e-724e9be401e4" />
-
                 <input type="hidden" name="from_name" value="Portfolio Lead" />
 
-                <div class="alert alert-success messenger-box-contact__msg" style="display: none" role="alert">
-                  Your message was sent successfully.
-                </div>
                 <div class="row">
                   <div class="col-md-6">
                     <div class="input-group">
@@ -684,7 +684,7 @@
                   <div class="col-md-6">
                     <div class="input-group">
                       <label for="email">Email <sup>*</sup></label>
-                      <input type="email" name="email" id="email" placeholder="Your email adress" required />
+                      <input type="email" name="email" id="email" placeholder="Your email address" required />
                     </div>
                   </div>
                   <div class="col-md-6">
@@ -707,15 +707,15 @@
                   </div>
                   <div class="col-md-12">
                     <div class="input-group">
-                      <label for="message">message</label>
-                      <textarea name="message" id="message" placeholder="Wrire your message here ..."
+                      <label for="message">message <sup>*</sup></label>
+                      <textarea name="message" id="message" placeholder="Write your message here ..."
                         required></textarea>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <div class="input-group submit-btn-wrap">
                       <button class="theme-btn" name="submit" type="submit" id="submit-form">
-                        Send Message
+                        <span id="btn-text">Send Message</span>
                       </button>
                     </div>
                   </div>
@@ -739,6 +739,53 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/ajax-form.js"></script>
   <script src="assets/js/color.js"></script>
+
+  <script>
+  const form = document.getElementById('portfolio-contact-form');
+  const successMsg = document.getElementById('form-success-msg');
+  const btnText = document.getElementById('btn-text');
+  const submitBtn = document.getElementById('submit-form');
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    btnText.innerText = "Sending...";
+    submitBtn.disabled = true;
+
+    const formData = new FormData(form);
+    const object = Object.fromEntries(formData);
+    const json = JSON.stringify(object);
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: json
+    })
+    .then(async (response) => {
+        let jsonResponse = await response.json();
+        if (response.status == 200) {
+            successMsg.style.display = "block";
+            form.reset();
+        } else {
+            alert(jsonResponse.message || "Something went wrong. Please try again.");
+        }
+    })
+    .catch(error => {
+        alert("Something went wrong. Please try again.");
+    })
+    .then(function() {
+        btnText.innerText = "Send Message";
+        submitBtn.disabled = false;
+        
+        setTimeout(() => {
+            successMsg.style.display = "none";
+        }, 5000);
+    });
+  });
+</script>
 </body>
 
 </html>
