@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 
 # Sitemap Location
-Sitemap: https://yomaldulanjana.com/sitemap.xml
+Sitemap: https://yomaldulanjana.me/sitemap.xml
