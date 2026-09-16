@@ -724,6 +724,9 @@ main.drake-main {
     color: var(--primary_color);
 }
 
+.section-header h2 span {
+    color: var(--primary_color);
+}
 
 /* 06 - Left Sidebar */
 
